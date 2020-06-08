@@ -43,6 +43,12 @@ class KNN:
             dist=np.linalg.norm(X-self.X_train[i],ord=self.p)
             if knn_list[max_index][0]>dist:
                 knn_list[max_index]=(dist,self.y_train[i])
+        #同样可以获取最大的类别
+#        classCount={}
+#        for i in range(self.n):
+#            votelabel=knn_list[i][-1]
+#            classCount[votelabel]=classCount.get(votelabel,0)+1
+#        maxcount=sorted(classCount.items(),key=lambda x:x[-1])[-1][0]
         knn = [k[-1] for k in knn_list]#返回y_train
         count_pairs=Counter(knn)
         max_count=sorted(count_pairs.items(),key=lambda x:x[-1])[-1][0] #sorted返回list
